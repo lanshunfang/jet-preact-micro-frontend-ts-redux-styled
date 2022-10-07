@@ -1,5 +1,5 @@
 import Context from "ojs/ojcontext";
-import { customElement, ExtendGlobalProps } from "ojs/ojvcomponent";
+import { ExtendGlobalProps } from "ojs/ojvcomponent";
 import { Component, ComponentChild, h } from "preact";
 import { Footer } from "./footer";
 import { Header } from "./header";
@@ -16,8 +16,8 @@ type Props = {
   userLogin?: string;
 }
 
-@customElement("remote-jet-preact-app-root")
-export class App extends Component<ExtendGlobalProps<Props>> {
+// @customElement("remote-jet-preact-app-root")
+export default class App extends Component<ExtendGlobalProps<Props>> {
   static defaultProps: Props = {
     appName: 'App Name',
     userLogin: "john.hancock@oracle.com"

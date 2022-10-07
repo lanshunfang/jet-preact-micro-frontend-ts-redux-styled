@@ -4,6 +4,8 @@
   as shown at https://oss.oracle.com/licenses/upl/
 
 */
+require('dotenv').config()
+
 const path = require('path');
 const ojetUtils = require('../util');
 const webpackUtils = require('./utils');

@@ -3,7 +3,7 @@ Come from the world of ReactJS/ReduxJS and can't bare KnockoutJS? Here you are.
 
 - Oracle JET 13
 - Micro-frontend
-    - Webpack Module Fedration
+    - Webpack Module Federation
 - Preact X 10
     - React Function Component
     - React hooks

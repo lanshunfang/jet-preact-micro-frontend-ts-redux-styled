@@ -1,3 +1,8 @@
+/**
+ * 
+ * @author Paul Lan<lanshunfang#gmail.com>
+ */
+
 import "ojs/ojdrawerlayout";
 import "ojs/ojnavigationlist";
 
@@ -52,7 +57,7 @@ export default function RouterRoot() {
                                 Start
                             </oj-button>
                         </div>
-                        <h6>Pick an item from the menu  42 </h6>
+                        <h6>Pick an item from the menu </h6>
                         <ContentWrapper>
                             <Outlet />
                         </ContentWrapper>

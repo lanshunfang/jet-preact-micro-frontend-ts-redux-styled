@@ -15,5 +15,7 @@ Come from the world of ReactJS/ReduxJS and can't bare KnockoutJS? Here you are.
     - Lazy loading
 - Sourcemap
     - Fixed JET Sourcemap issue with JSX
+- Misc
+    - dotenv
 
 ![](doc/images/2022-09-27-21-41-46.png)

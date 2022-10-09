@@ -24,13 +24,13 @@ const packageJson = require(`${projectRoot}/package.json`)
 
 const servePort = process.env.PORT || 8082;
 
-const moduleName = 'RemoteJetPreactApp';
+const moduleName = process.env.APP_NAME || 'remoteJetPreact';
 
 let mergedConfig = merge(common, {
   mode: 'development',
 
   output: {
-    filename: '[name].bundle.js',
+    // filename: '[name].bundle.js',
     publicPath: `http://localhost:${servePort}/`,
   },
   // devtool: 'eval-cheap-module-source-map',
@@ -64,32 +64,42 @@ let mergedConfig = merge(common, {
     hot: true,
   },
   plugins: [
-    new PreactRefreshPlugin(),
-
     new ModuleFederationPlugin({
-      name: moduleName,
+      name: 'remoteJetPreact',
       filename: 'remoteEntry.js',
       exposes: {
-        './RemoteJetPreactApp': `${projectRoot}/src/bootstrap`
-      },
-      shared: packageJson.dependencies
+        // './remoteJetPreactBootstrap': `${projectRoot}/src/bootstrap`
+        './remoteJetPreactBootstrap': `./src/bootstrap`
+      }, 
+      shared: Object.fromEntries(
+        Object.entries(packageJson.dependencies).map(
+          entry => ([entry[0], {
+            // requiredVersion: entry[1], 
+            singleton: true,
+            eager: true
+          }])
+        )
+      )
     }),
+
+    new PreactRefreshPlugin(),
+
 
   ],
 });
 
-let plugins = mergedConfig.plugins
-  .filter(plugin => !(plugin instanceof HtmlWebpackPlugin));
+// let plugins = mergedConfig.plugins
+//   .filter(plugin => !(plugin instanceof HtmlWebpackPlugin));
 
-plugins.push(
-  new HtmlWebpackPlugin({
-    template: path.resolve(configPaths.src.common, 'index.html'),
-    // tmp fix from: https://github.com/webpack/webpack-dev-server/issues/3038
-    excludeChunks: [moduleName],
-  },
-  )
-);
+// plugins.push(
+//   new HtmlWebpackPlugin({
+//     template: path.resolve(configPaths.src.common, 'index.html'),
+//     // tmp fix from: https://github.com/webpack/webpack-dev-server/issues/3038
+//     excludeChunks: [moduleName],
+//   },
+//   )
+// );
 
-mergedConfig.plugins = plugins;
+// mergedConfig.plugins = plugins;
 
 module.exports = mergedConfig;

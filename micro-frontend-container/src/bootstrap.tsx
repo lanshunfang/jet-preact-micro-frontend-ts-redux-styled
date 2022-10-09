@@ -63,7 +63,7 @@ const mountRemote = async (el: Element) => {
 const appRemoteSel = 'remote-jet-preact-app';
 const appRemoteRoot = document.querySelector(appRemoteSel)
 if (appRemoteRoot) {
-    // mountRemote(appRemoteRoot)
+    mountRemote(appRemoteRoot)
 } else {
     throw new Error(`[ERROR][Remote] There should be a node matching selector "${appContainerSel}"`);
 }

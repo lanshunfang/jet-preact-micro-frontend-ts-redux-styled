@@ -57,7 +57,7 @@ export default function RouterRoot() {
                                 Start
                             </oj-button>
                         </div>
-                        <h6>Pick an item from the menu </h6>
+                        <h6>Child (Remote)</h6>
                         <ContentWrapper>
                             <Outlet />
                         </ContentWrapper>

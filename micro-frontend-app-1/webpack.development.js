@@ -42,6 +42,10 @@ let mergedConfig = merge(common, {
   devtool: 'source-map',
 
   devServer: {
+
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     static: [
       {
         directory: path.join(webpackUtils.oracleJetDistCssPath, 'redwood'),
@@ -88,18 +92,18 @@ let mergedConfig = merge(common, {
   ],
 });
 
-// let plugins = mergedConfig.plugins
-//   .filter(plugin => !(plugin instanceof HtmlWebpackPlugin));
+let plugins = mergedConfig.plugins
+  .filter(plugin => !(plugin instanceof HtmlWebpackPlugin));
 
-// plugins.push(
-//   new HtmlWebpackPlugin({
-//     template: path.resolve(configPaths.src.common, 'index.html'),
-//     // tmp fix from: https://github.com/webpack/webpack-dev-server/issues/3038
-//     excludeChunks: [moduleName],
-//   },
-//   )
-// );
+plugins.push(
+  new HtmlWebpackPlugin({
+    template: path.resolve(configPaths.src.common, 'index.html'),
+    // tmp fix from: https://github.com/webpack/webpack-dev-server/issues/3038
+    excludeChunks: [moduleName],
+  },
+  )
+);
 
-// mergedConfig.plugins = plugins;
+mergedConfig.plugins = plugins;
 
 module.exports = mergedConfig;

@@ -43,6 +43,9 @@ let mergedConfig = merge(common, {
   devtool: 'source-map',
 
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     static: [
       {
         directory: path.join(webpackUtils.oracleJetDistCssPath, 'redwood'),
@@ -62,45 +65,43 @@ let mergedConfig = merge(common, {
     // compress: true,
     port: servePort,
     open: true,
-    // hot: true,
+    hot: true,
   },
   plugins: [
-    // new PreactRefreshPlugin(),
+    new PreactRefreshPlugin(),
 
     new ModuleFederationPlugin({
       name: `jetPreactContainer`,
 
-      // remoteType: 'var',
       remotes: {
         remoteJetPreact: 'remoteJetPreact@http://localhost:8082/remoteEntry.js'
-        // remoteJetPreact: 'remoteJetPreact'
       },
-      shared: Object.fromEntries(
-        Object.entries(packageJson.dependencies).map(
-          entry => ([entry[0], { 
-            // requiredVersion: entry[1], 
-            singleton: true,
-            eager: true
-           }])
-        )
-      )
+      // shared: Object.fromEntries(
+      //   Object.entries(packageJson.dependencies).map(
+      //     entry => ([entry[0], { 
+      //       // requiredVersion: entry[1], 
+      //       singleton: true,
+      //       eager: true
+      //      }])
+      //   )
+      // )
     }),
 
   ],
 });
 
-// let plugins = mergedConfig.plugins
-//   .filter(plugin => !(plugin instanceof HtmlWebpackPlugin));
+let plugins = mergedConfig.plugins
+  .filter(plugin => !(plugin instanceof HtmlWebpackPlugin));
 
-// plugins.push(
-//   new HtmlWebpackPlugin({
-//     template: path.resolve(configPaths.src.common, 'index.html'),
-//     // tmp fix from: https://github.com/webpack/webpack-dev-server/issues/3038
-//     excludeChunks: [moduleName],
-//   },
-//   )
-// );
+plugins.push(
+  new HtmlWebpackPlugin({
+    template: path.resolve(configPaths.src.common, 'index.html'),
+    // tmp fix from: https://github.com/webpack/webpack-dev-server/issues/3038
+    excludeChunks: [moduleName],
+  },
+  )
+);
 
-// mergedConfig.plugins = plugins;
+mergedConfig.plugins = plugins;
 
 module.exports = mergedConfig;

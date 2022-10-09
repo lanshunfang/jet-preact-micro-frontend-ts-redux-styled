@@ -17,6 +17,7 @@ Come from the world of ReactJS/ReduxJS and can't bare KnockoutJS? Here you are.
     - Fixed JET Sourcemap issue with JSX
 - Misc
     - dotenv
+    - Hot module reload for both children and container modules (module federation)
 
 # Usage 
 Open a new terminal for Child remote page

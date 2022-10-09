@@ -19,7 +19,7 @@ export const ROUTE_ABS: {
         isRoot: true
     },
     Counter: {
-        path: '/counter',
+        path: '/page1',
     },
 
     Demo2: {
@@ -43,6 +43,7 @@ export const router = createHashRouter([
                 path: ROUTE_ABS.Demo2.path,
                 element: <div>Demo 2</div>,
             },
+            //    <remote-jet-preact-app></remote-jet-preact-app>
         ],
     },
 

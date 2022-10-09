@@ -67,7 +67,7 @@ export default function RouterRoot() {
                     <NavListWrapper slot="start" class="demo-drawer-start" id="demo-drawer-start">
                         <div class="demo-drawer-header">
                             <div>
-                                <h6>Welcome</h6>
+                                <h6>Children Nav</h6>
                             </div>
                             <oj-button
                                 id="buttonCloser"

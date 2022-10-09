@@ -19,7 +19,7 @@ export const ROUTE_ABS: {
         isRoot: true
     },
     ContainerHeader: {
-        path: '/container-header',
+        path: '/page1',
     },
 
 }
@@ -35,6 +35,7 @@ export const router = createHashRouter([
                     <ContainerHeaderLazy />
                 </Suspense>,
             },
+            //    
         ],
     },
 

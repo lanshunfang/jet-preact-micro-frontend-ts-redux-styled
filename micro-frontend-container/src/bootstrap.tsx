@@ -50,23 +50,6 @@ if (containerRoot) {
     throw new Error(`[ERROR][Container] There should be a node matching selector "${appContainerSel}"`);
 }
 
-// remote
-const mountRemote = async (el: Element) => {
-    // @ts-ignore
-    const remoteJetPreactBootstrap = import('remoteJetPreact/remoteJetPreactBootstrap');
-
-    const bootstrapRemote = await remoteJetPreactBootstrap;
-    // debugger
-    // @ts-ignore
-    bootstrapRemote.mount(el)
-}
-const appRemoteSel = 'remote-jet-preact-app';
-const appRemoteRoot = document.querySelector(appRemoteSel)
-if (appRemoteRoot) {
-    mountRemote(appRemoteRoot)
-} else {
-    throw new Error(`[ERROR][Remote] There should be a node matching selector "${appContainerSel}"`);
-}
 
 export default { };
 

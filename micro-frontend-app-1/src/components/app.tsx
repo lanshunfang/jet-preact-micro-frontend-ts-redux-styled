@@ -1,8 +1,6 @@
 import Context from "ojs/ojcontext";
 import { ExtendGlobalProps } from "ojs/ojvcomponent";
 import { Component, ComponentChild, h } from "preact";
-import { Footer } from "./footer";
-import { Header } from "./header";
 
 import { Provider } from 'react-redux';
 import {
@@ -27,13 +25,10 @@ export default class App extends Component<ExtendGlobalProps<Props>> {
     return (
       <Provider store={store}>
         <div id="appContainer" class="oj-web-applayout-page">
-          <Header
-            appName={props.appName} 
-            userLogin={props.userLogin} 
-          />
+
 
           <RouterProvider router={router} />
-          <Footer />
+
         </div>
       </Provider>
     );

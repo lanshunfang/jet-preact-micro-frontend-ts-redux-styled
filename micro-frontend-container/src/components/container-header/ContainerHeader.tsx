@@ -5,10 +5,12 @@ import "ojs/ojknockout";
 import "ojs/ojlabel";
 
 import { h } from "preact";
-import { useEffect } from 'preact/hooks';
+import { useEffect, useRef } from 'preact/hooks';
 import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+
+
 
 import {
   getHeaderAsync, selectContainerHeader
@@ -24,14 +26,41 @@ export function ContainerHeader() {
   const containerHeader = useAppSelector(selectContainerHeader);
   const dispatch = useAppDispatch();
 
-  useEffect(() => { 
-    dispatch(getHeaderAsync())
+  const ref = useRef()
+
+  useEffect(() => {
+    dispatch(getHeaderAsync());
+
   }, []);
-  
+
+
+  useEffect(() => {
+
+    if (!ref.current) {
+      return
+    }
+
+    // remote
+    const mountRemote = async (el: Element) => {
+      // @ts-ignore
+      const remoteJetPreactBootstrap = import('remoteJetPreact/remoteJetPreactBootstrap');
+
+      const bootstrapRemote = await remoteJetPreactBootstrap;
+
+      // @ts-ignore
+      bootstrapRemote.mount(el)
+    };
+
+
+    mountRemote(ref.current);
+
+
+  }, [ref]);
+
   return (
     <div>
       <Title>{containerHeader}</Title>
-      
+      <div ref={ref}></div>
     </div>
   );
 }

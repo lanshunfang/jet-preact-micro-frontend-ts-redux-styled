@@ -55,7 +55,7 @@ export default function RouterRoot() {
                                 Start
                             </oj-button>
                         </div>
-                        <h6>Container </h6>
+                        <h6>Pick an item to see the Remote children </h6>
                         <ContentWrapper>
                             <Outlet />
                         </ContentWrapper>

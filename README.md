@@ -18,4 +18,23 @@ Come from the world of ReactJS/ReduxJS and can't bare KnockoutJS? Here you are.
 - Misc
     - dotenv
 
-![](doc/images/2022-09-27-21-41-46.png)
+# Usage 
+Open a new terminal for Child remote page
+```bash
+cd micro-frontend-app-1
+yarn
+yarn start
+
+```
+
+Open a new terminal for Container
+```bash
+cd micro-frontend-container
+yarn
+yarn start
+
+```
+
+![](doc/images/2022-10-09-00-54-01.png)
+
+![](doc/images/2022-10-09-00-54-35.png)

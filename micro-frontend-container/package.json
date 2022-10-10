@@ -47,7 +47,7 @@
   "scripts": {
     "oj-serve": "node_modules/@oracle/ojet-cli/bin/ojet serve",
     "config-jet-webpack": "export JET_WP_PATH=\"node_modules/@oracle/oraclejet-tooling/lib/webpack/\"; cd $JET_WP_PATH; [[ ! -f \"webpack.development.bak.js\" ]] && (mv webpack.development.js webpack.development.bak.$(date +%F).js); cd -; cp webpack.development.js $JET_WP_PATH/",
-    "start": "yarn config-jet-webpack; node node_modules/@oracle/ojet-cli/bin/ojet serve",
+    "start": "npx kill-port --port 8081; yarn config-jet-webpack; node node_modules/@oracle/ojet-cli/bin/ojet serve",
     "serve": "yarn start",
     "dev": "yarn start",
     "build": "yarn config-jet-webpack; node node_modules/@oracle/ojet-cli/bin/ojet build"

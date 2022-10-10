@@ -13,7 +13,7 @@
   },
   "private": true,
   "scripts": {
-    "preinstall": "cd micro-frontend-shared; yarn; cd -; cd micro-frontend-app-1; yarn; cd -; cd micro-frontend-container; yarn; cd -;",
+    "preinstall": "nvm use 14; cd micro-frontend-shared; yarn; cd -; cd micro-frontend-app-1; yarn; cd -; cd micro-frontend-container; yarn; cd -;",
     "start": "(cd micro-frontend-app-1; yarn start; cd -; ) & ; (cd micro-frontend-container; yarn start; cd -) &",
     "serve": "yarn start",
     "dev": "yarn start",

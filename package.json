@@ -11,9 +11,9 @@
   "private": true,
   "scripts": {
     "preinstall": "zsh -c \"source ~/.zshrc; nvm use 14; cd micro-frontend-shared; yarn; cd -; cd micro-frontend-app-1; yarn; cd -; cd micro-frontend-container; yarn; cd -; \"",
-    "start": "(cd micro-frontend-app-1; yarn start; cd -; ) & ; (cd micro-frontend-container; yarn start; cd -) &",
+    "start": "zsh -c \"source ~/.zshrc; nvm use 14; (cd micro-frontend-app-1; yarn start; cd -; ) & (cd micro-frontend-container; yarn start; cd -) & \"",
     "serve": "yarn start",
     "dev": "yarn start",
-    "build": "(cd micro-frontend-app-1; yarn build; cd -; ) & ; (cd micro-frontend-container; yarn build; cd -) &"
+    "build": "zsh -c \"source ~/.zshrc; nvm use 14; (cd micro-frontend-app-1; yarn build; cd -; ) & ; (cd micro-frontend-container; yarn build; cd -) & \""
   }
 }

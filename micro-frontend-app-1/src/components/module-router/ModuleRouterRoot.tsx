@@ -13,8 +13,8 @@ import { useCallback } from "preact/compat";
 import { useState } from 'preact/hooks';
 
 import { NavLink, Outlet } from "react-router-dom";
-import { ROUTE_ABS } from "./router";
-
+import { useAppSelector } from "../../app/hooks";
+import { selectModuleRouter } from "./moduleRouter-slice";
 
 const ComponentWrapper = styled.div`
  .demo-padding {
@@ -23,11 +23,9 @@ const ComponentWrapper = styled.div`
 `;
 
 
-
 const ContentWrapper = styled.div`
 
 `;
-
 
 
 const NavListWrapper = styled.div`
@@ -36,14 +34,15 @@ const NavListWrapper = styled.div`
 `;
 
 
-export default function RouterRoot() {
+export default function ModuleRouterRoot() {
     const [startOpened, setStartOpened] = useState(false);
     const [tabName, setTabName] = useState<'counter' | 'demo-2'>('counter');
+
+    const moduleRouter = useAppSelector(selectModuleRouter);
 
     const startToggle = useCallback(() => {
         setStartOpened(!startOpened);
     }, [startOpened]);
-
 
     return (
         <div class="oj-web-applayout-max-width oj-web-applayout-content">
@@ -81,7 +80,7 @@ export default function RouterRoot() {
                         <oj-navigation-list>
                             <ul>
                                 {
-                                    Object.entries(ROUTE_ABS)
+                                    Object.entries(moduleRouter.ROUTE_ABS)
                                         .filter(entry => !entry[1].isRoot)
                                         .map(entry => <NavLink
                                             key={entry[0]}

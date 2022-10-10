@@ -49,6 +49,7 @@ export function ContainerHeader() {
 
       const app1Props: App1Props = {
         appName: 'app1',
+        appRouterRoot: '/page1'
       };
       
       bootstrapRemote.mount(el, app1Props)

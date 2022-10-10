@@ -3,13 +3,9 @@ import { Component, ComponentChild, h } from "preact";
 import { App1Props } from "../../../micro-frontend-shared/src/typing";
 
 import { Provider } from 'react-redux';
-import {
-  RouterProvider
-} from "react-router-dom";
 
 import { store } from '../app/store';
-import { router } from "./router";
-
+import ChildRouterProvider from "./module-router/ModuleRouter";
 
 // @customElement("remote-jet-preact-app-root")
 export default class App extends Component<App1Props> {
@@ -22,9 +18,7 @@ export default class App extends Component<App1Props> {
       <Provider store={store}>
         <div id="appContainer" class="oj-web-applayout-page">
           <h2>{props.appName}</h2>
-
-          <RouterProvider router={router} />
-
+          <ChildRouterProvider {...props} />
         </div>
       </Provider>
     );

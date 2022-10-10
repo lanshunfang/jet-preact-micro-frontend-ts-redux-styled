@@ -1,11 +1,10 @@
-import { h, Component, ComponentChild } from "preact";
+import "ojs/ojbutton";
+import "ojs/ojmenu";
 import * as ResponsiveUtils from "ojs/ojresponsiveutils";
 import "ojs/ojtoolbar";
-import "ojs/ojmenu";
-import "ojs/ojbutton";
+import { Component, ComponentChild, h } from "preact";
 
 type Props = {
-  appName: string,
   userLogin: string
 }
 
@@ -43,7 +42,7 @@ export class Header extends Component<Props, State> {
             <h1
               class="oj-sm-only-hide oj-web-applayout-header-title"
               title="Application Name">
-              {props.appName}
+              Container
             </h1>
           </div>
           <div class="oj-flex-bar-end">

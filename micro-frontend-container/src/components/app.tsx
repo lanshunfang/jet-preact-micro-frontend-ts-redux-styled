@@ -14,23 +14,17 @@ import {
 import { store } from '../app/store';
 import { router } from "./router";
 type Props = {
-  appName?: string;
   userLogin?: string;
 }
 
 // @customElement("remote-jet-preact-app-root")
-export default class App extends Component<ExtendGlobalProps<Props>> {
-  static defaultProps: Props = {
-    appName: 'App Name',
-    userLogin: "john.hancock@oracle.com"
-  };
+export default class App extends Component<ExtendGlobalProps<{}>> {
 
   render(props: ExtendGlobalProps<Props>): ComponentChild {
     return (
       <Provider store={store}>
         <div id="appContainer" class="oj-web-applayout-page">
           <Header
-            appName={props.appName} 
             userLogin={props.userLogin} 
           />
 

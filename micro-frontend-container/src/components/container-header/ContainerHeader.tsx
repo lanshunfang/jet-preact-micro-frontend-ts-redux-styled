@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-
+import { App1Props } from '../.././../../micro-frontend-shared/src/typing';
 
 import {
   getHeaderAsync, selectContainerHeader
@@ -47,8 +47,11 @@ export function ContainerHeader() {
 
       const bootstrapRemote = await remoteJetPreactBootstrap;
 
-      // @ts-ignore
-      bootstrapRemote.mount(el)
+      const app1Props: App1Props = {
+        appName: 'app1',
+      };
+      
+      bootstrapRemote.mount(el, app1Props)
     };
 
 

@@ -1,6 +1,6 @@
 import Context from "ojs/ojcontext";
-import { ExtendGlobalProps } from "ojs/ojvcomponent";
 import { Component, ComponentChild, h } from "preact";
+import { App1Props } from "../../../micro-frontend-shared/src/typing";
 
 import { Provider } from 'react-redux';
 import {
@@ -9,23 +9,19 @@ import {
 
 import { store } from '../app/store';
 import { router } from "./router";
-type Props = {
-  appName?: string;
-  userLogin?: string;
-}
+
 
 // @customElement("remote-jet-preact-app-root")
-export default class App extends Component<ExtendGlobalProps<Props>> {
-  static defaultProps: Props = {
+export default class App extends Component<App1Props> {
+  static defaultProps: App1Props = {
     appName: 'App Name',
-    userLogin: "john.hancock@oracle.com"
   };
 
-  render(props: ExtendGlobalProps<Props>): ComponentChild {
+  render(props: App1Props): ComponentChild {
     return (
       <Provider store={store}>
         <div id="appContainer" class="oj-web-applayout-page">
-
+          <h2>{props.appName}</h2>
 
           <RouterProvider router={router} />
 

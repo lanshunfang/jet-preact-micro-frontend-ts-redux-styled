@@ -1,0 +1,22 @@
+{
+  "name": "oracle-jet-preact-ts-webpack-redux-styled-component",
+  "version": "1.0.0",
+  "description": "An Oracle JavaScript Extension Toolkit(JET) web app",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "private": true,
+  "scripts": {
+    "preinstall": "cd micro-frontend-shared; yarn; cd -; cd micro-frontend-app-1; yarn; cd -; cd micro-frontend-container; yarn; cd -;",
+    "start": "(cd micro-frontend-app-1; yarn start; cd -; ) & ; (cd micro-frontend-container; yarn start; cd -) &",
+    "serve": "yarn start",
+    "dev": "yarn start",
+    "build": "(cd micro-frontend-app-1; yarn build; cd -; ) & ; (cd micro-frontend-container; yarn build; cd -) &"
+  }
+}
